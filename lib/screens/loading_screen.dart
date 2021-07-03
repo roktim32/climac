@@ -3,6 +3,7 @@
 import 'package:climac/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:climac/services/networking.dart';
+import 'location_screen.dart';
 
 //
 const apiKey = 'a24cffa1713095d4afd649dda636114d';
@@ -33,7 +34,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     var weatherData = await networkHelper.getData();
 
-    // getData();
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return LocationScreen();
+    }));
   }
 
   //  api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=a24cffa1713095d4afd649dda636114d
