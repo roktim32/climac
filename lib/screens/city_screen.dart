@@ -1,3 +1,4 @@
+import 'package:climac/utilities/constrants.dart';
 import 'package:flutter/material.dart';
 
 class CityScreen extends StatefulWidget {
@@ -6,6 +7,8 @@ class CityScreen extends StatefulWidget {
 }
 
 class _CityScreenState extends State<CityScreen> {
+  String? cityName;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,20 +30,25 @@ class _CityScreenState extends State<CityScreen> {
                     Icons.arrow_back_ios,
                     size: 50.0,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
+                  style: TextStyle(color: Colors.black),
+                  decoration: kTextFieldInputDecoration,
+                  onChanged: (value) {
+                    cityName = value;
+                  },
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context, cityName);
+                },
                 child: Text(
                   "Get Weather",
                   style: TextStyle(fontSize: 20.0),
